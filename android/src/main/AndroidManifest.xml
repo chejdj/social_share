@@ -1,0 +1,22 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+  package="com.chejdj.social_share">
+    <queries>
+        <package android:name="com.facebook.katana" />
+        <package android:name="com.tencent.mm" />
+        <package android:name="com.twitter.android" />
+        <package android:name="com.whatsapp" />
+        <package android:name="jp.naver.line.android" />
+    </queries>
+    <application>
+
+        <provider
+            android:name="com.chejdj.social_share.provider.ShareFileProvider"
+            android:authorities="com.pplingo.share"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/share_file_path" />
+        </provider>
+    </application>
+</manifest>
