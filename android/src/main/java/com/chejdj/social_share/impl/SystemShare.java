@@ -68,13 +68,7 @@ public class SystemShare implements PlatformShare {
 
     @Override
     public void shareWebpage(@NonNull String webUrl, String title, String desc, File imgFile, MethodChannel.Result result, Activity activity) {
-        Intent shareIntent;
-        if (imgFile != null && imgFile.isFile()) {
-            Uri fileUri = ShareUtil.generateFilePath(activity, imgFile, pkgName);
-            shareIntent = ShareUtil.createShareIntent("image/*", pkgName, title, webUrl, fileUri);
-        } else {
-            shareIntent = ShareUtil.createShareIntent("text/plain", pkgName, title, webUrl, null);
-        }
+        Intent shareIntent = ShareUtil.createShareIntent("text/plain", pkgName, title, webUrl, null);
         try {
             activity.startActivity(Intent.createChooser(shareIntent, "Share via"));
             SocialSharePlugin.resultSuccess(result);

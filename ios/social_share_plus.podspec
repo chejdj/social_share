@@ -3,7 +3,7 @@
 # Run `pod lib lint social_share.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'social_share'
+  s.name             = 'social_share_plus'
   s.version          = '0.0.1'
   s.summary          = 'A new Flutter project.'
   s.description      = <<-DESC

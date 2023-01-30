@@ -24,6 +24,7 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
+		<string>weixinurlparamsapi</string>
 		<string>fb</string>
 		<string>fbauth</string>
 		<string>weixin</string>

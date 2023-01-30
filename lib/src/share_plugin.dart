@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_share_plus/src/share_register.dart';
 
-import 'dialog/share_dialog.dart';
 import 'share_defines.dart';
 
 typedef PlatformCallback = void Function(int? platformId);
@@ -63,22 +62,5 @@ class SharePlugin {
         errorCallBack(ShareErrorCode.ERROR_BEFORE_JUMP);
       }
     });
-  }
-
-  ///分享弹窗, 由用户指定分享平台(LaShareParamsBean中指定平台将被覆盖)
-  static void startShare(
-      {required ShareParamsBean shareParamsBean,
-      required BuildContext context,
-      PlatformCallback? notInstallCallback,
-      successCallback,
-      errorCallBack,
-      PlatformCallback? selectedCallback}) {
-    ShareDialog().showShareDialog(
-        shareParamsBean: shareParamsBean,
-        context: context,
-        notInstallCallBack: notInstallCallback,
-        selectedCallback: selectedCallback,
-        successCallBack: successCallback,
-        errorCallBack: errorCallBack);
   }
 }

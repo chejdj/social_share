@@ -59,7 +59,22 @@ static long THUMB_IMAGE_MAX_BYTES = 64000;
         [SocialSharePlugin resultFail:result errorMessage:@"image invalid"];
         return;
     }
-    [ShareUtil systemShare:nil withText:nil withImage:image withUrl:nil result:result excludeArray:_excludeArray];
+    NSData *imageData = UIImageJPEGRepresentation(image, 0.7);
+    WXImageObject *imageObject = [WXImageObject object];
+    imageObject.imageData = imageData;
+    WXMediaMessage * message = [WXMediaMessage message];
+    message.mediaObject = imageObject;
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc] init];
+    req.message = message;
+    req.bText = NO;
+    req.scene = _scene;
+    [WXApi sendReq:req completion:^(BOOL success) {
+       if (success) {
+            [SocialSharePlugin resultSuccess:result];
+       } else {
+            [SocialSharePlugin resultFail:result errorCode:ERROR_AFTER_JUMP errorMessage:nil];
+       }
+    }];
 }
 
 -(void)shareWebpage:(NSString*)webUrl title:(NSString*)title desc:(NSString*)desc
