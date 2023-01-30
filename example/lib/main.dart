@@ -19,7 +19,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final _imageUrl =
-      "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fyouimg1.c-ctrip.com%2Ftarget%2Ftg%2F004%2F531%2F381%2F4339f96900344574a0c8ca272a7b8f27.jpg&refer=http%3A%2F%2Fyouimg1.c-ctrip.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1619144668&t=963700eceb2ea65e6b85b56d53fb92ea";
+      'https://images.ctfassets.net/41derkrb00ei/56TMtTb175hK9WydTsxkbN/bc9081f8bacca79faed82f1755c5c8a3/_______________1-0118______.png';
   final _webpageUrl = "https://www.baidu.com/";
   final _imageUrlForWeb =
       "https://cdn.lingoace.com/image/pub/default-avatar-st.jpg";
@@ -32,27 +32,21 @@ class _MyAppState extends State<MyApp> {
 
   void _registerPlatform() {
     ShareRegister register = ShareRegister();
-    register.setupWechat("wx13bba80f4a585352",
-        "1f88b2da6eb79e7115b4fe7274641ad9", "https://ksoub.share2dlink.com/");
-    register.setupFacebook(
-        "786751755425259", "59827b76294e1bde356cddb1e1808010", "shareSDK");
-    register.setupTwitter("viOnkeLpHBKs6KXV7MPpeGyzE",
-        "NJEglQUy2rqZ9Io9FcAU9p17omFqbORknUpRrCDOK46aAbIiey", "http://mob.com");
-
-    ///如果后面接入其他平台分享在这里再加上对应平台初始化注册代码
+    register.setupWechat(
+        "wx66192691ae27148b", "https://pplingo.page.link/UdTB/");
     SharePlugin.registerPlatforms(register);
   }
 
   final PlatformCallback _notInstallCallback = (int? platformId) {
-    BotToast.showText(text: "未安装");
+    BotToast.showText(text: "not install");
   };
 
   final Function _successCallback = () {
-    BotToast.showText(text: "分享成功");
+    BotToast.showText(text: "share successfully");
   };
 
   final Function _errorCallback = (String code, {String? message}) {
-    BotToast.showText(text: "分享失败：$code");
+    BotToast.showText(text: "share failed：$code");
   };
 
   Future<ShareParamsBean> _buildImageBean(SharePlatform platform,
@@ -78,8 +72,8 @@ class _MyAppState extends State<MyApp> {
       platform: platform,
       imageFilePath: file.path,
       webUrl: _webpageUrl,
-      title: "这是标题",
-      text: "这是描述",
+      title: "This is title",
+      text: "This is description",
       pkgNameAndroid: pkgName,
     );
   }
@@ -96,158 +90,151 @@ class _MyAppState extends State<MyApp> {
           appBar: AppBar(
             title: const Text('Plugin example app'),
           ),
-          body: Column(
-            children: <Widget>[
-              MaterialButton(
-                child: const Text("分享图片到微信好友"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildImageBean(SharePlatforms.wechatSession),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享图片到朋友圈"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildImageBean(SharePlatforms.wechatTimeline),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享图片到 facebook"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildImageBean(SharePlatforms.facebook),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享图片到 whatsapp"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildImageBean(SharePlatforms.whatsApp),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享图片到 twitter"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildImageBean(SharePlatforms.twitter),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享图片到 line"),
-                onPressed: () async {
-                  SharePlugin.share(await _buildImageBean(SharePlatforms.line),
-                      _notInstallCallback, _successCallback, _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享图片到 native"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildImageBean(SharePlatforms.native),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享网页到微信好友"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildWebpageBean(SharePlatforms.wechatSession),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享网页到朋友圈"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildWebpageBean(SharePlatforms.wechatTimeline),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享网页到 facebook"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildWebpageBean(SharePlatforms.facebook),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享网页到 whatsApp"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildWebpageBean(SharePlatforms.whatsApp),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享网页到 twitter"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildWebpageBean(SharePlatforms.twitter),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享网页到 line"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildWebpageBean(SharePlatforms.line),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享网页到 native"),
-                onPressed: () async {
-                  SharePlugin.share(
-                      await _buildWebpageBean(SharePlatforms.native),
-                      _notInstallCallback,
-                      _successCallback,
-                      _errorCallback);
-                },
-              ),
-              MaterialButton(
-                child: const Text("分享弹窗"),
-                onPressed: () async {
-                  SharePlugin.startShare(
-                      shareParamsBean:
-                          await _buildWebpageBean(SharePlatforms.native),
-                      notInstallCallback: _notInstallCallback,
-                      successCallback: _successCallback,
-                      errorCallBack: _errorCallback,
-                      context: context);
-                },
-              ),
-            ],
+          body: SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                MaterialButton(
+                  child: const Text("share images to wechat friends"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildImageBean(SharePlatforms.wechatSession),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share images to wechat timeline"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildImageBean(SharePlatforms.wechatTimeline),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share images to facebook"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildImageBean(SharePlatforms.facebook),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share images to whatsapp"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildImageBean(SharePlatforms.whatsApp),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share images to twitter"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildImageBean(SharePlatforms.twitter),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share images to line"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildImageBean(SharePlatforms.line),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share images to native"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildImageBean(SharePlatforms.native),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share webpage to wechat friends"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildWebpageBean(SharePlatforms.wechatSession),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share webpage to wechat timeline"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildWebpageBean(SharePlatforms.wechatTimeline),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share webpage to facebook"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildWebpageBean(SharePlatforms.facebook),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share webpage to whatsApp"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildWebpageBean(SharePlatforms.whatsApp),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share webpage to twitter"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildWebpageBean(SharePlatforms.twitter),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share webpage to line"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildWebpageBean(SharePlatforms.line),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+                MaterialButton(
+                  child: const Text("share webpage to native"),
+                  onPressed: () async {
+                    SharePlugin.share(
+                        await _buildWebpageBean(SharePlatforms.native),
+                        _notInstallCallback,
+                        _successCallback,
+                        _errorCallback);
+                  },
+                ),
+              ],
+            ),
           ),
         );
       }),

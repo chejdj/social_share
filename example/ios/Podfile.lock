@@ -1,16 +1,17 @@
 PODS:
   - Flutter (1.0.0)
-  - path_provider_ios (0.0.1):
+  - path_provider_foundation (0.0.1):
     - Flutter
-  - social_share (0.0.1):
+    - FlutterMacOS
+  - social_share_plus (0.0.1):
     - Flutter
     - WechatOpenSDK
-  - WechatOpenSDK (1.8.7.1)
+  - WechatOpenSDK (1.9.7)
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - path_provider_ios (from `.symlinks/plugins/path_provider_ios/ios`)
-  - social_share (from `.symlinks/plugins/social_share/ios`)
+  - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/ios`)
+  - social_share_plus (from `.symlinks/plugins/social_share_plus/ios`)
 
 SPEC REPOS:
   trunk:
@@ -19,17 +20,17 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  path_provider_ios:
-    :path: ".symlinks/plugins/path_provider_ios/ios"
-  social_share:
-    :path: ".symlinks/plugins/social_share/ios"
+  path_provider_foundation:
+    :path: ".symlinks/plugins/path_provider_foundation/ios"
+  social_share_plus:
+    :path: ".symlinks/plugins/social_share_plus/ios"
 
 SPEC CHECKSUMS:
-  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
-  path_provider_ios: 14f3d2fd28c4fdb42f44e0f751d12861c43cee02
-  social_share: 1a8ef24d9dccf287b701507e9a4d4c275dc048db
-  WechatOpenSDK: 6a4d1436c15b3b5fe2a0bd383f3046010186da44
+  Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
+  path_provider_foundation: 37748e03f12783f9de2cb2c4eadfaa25fe6d4852
+  social_share_plus: 0441e1fd4c24344b6198cd28ac69ec30f9c39eef
+  WechatOpenSDK: 2f0ae448c7525cb5c27db5f7aa0f568de0988fa4
 
-PODFILE CHECKSUM: 8e679eca47255a8ca8067c4c67aab20e64cb974d
+PODFILE CHECKSUM: e5ee00144d04e7b168ba7ea28a9753540e444f3d
 
 COCOAPODS: 1.11.3
