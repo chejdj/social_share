@@ -70,14 +70,10 @@ LaShareParamsBean generateBean() {
 * <font size=5>check App whether install</font>
 ```
 LaSharePlugin.isClientInstalled(LaSharePlatforms.whatsApp);
-```  
-* <font size=5>pop share dialog</font>
 ```
-   LaSharePlugin.startShare(generateBean(),notInstallCallBack,successCallBack,errorCallBack);
-```  
 ## <font size=6>Preview</font>
 ![all.png](https://s2.loli.net/2022/07/13/zTl4wc7PvIAoKx3.png)
 ## <font size=6>Attention</font>
-1. iOS wechat image share use the SystemShare because wechat forbidden the image share for foreign.
+1. iOS wechat image share use the SystemShare because wechat forbidden the image share for foreign company.
 2. You should add some scheme config for accessing outer apps. Refer to example configuration.  
 
